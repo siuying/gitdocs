@@ -6,6 +6,7 @@ require 'shell_tools'
 require 'guard'
 
 require 'gitdocs/markdown_converter'
+require 'gitdocs/markdown_template'
 require 'gitdocs/version'
 require 'gitdocs/configuration'
 require 'gitdocs/runner'
@@ -13,7 +14,6 @@ require 'gitdocs/server'
 require 'gitdocs/cli'
 require 'gitdocs/manager'
 require 'gitdocs/docfile'
-require 'gitdocs/rendering'
 
 module Gitdocs
 

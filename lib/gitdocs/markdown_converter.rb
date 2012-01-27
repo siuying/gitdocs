@@ -1,7 +1,9 @@
 require 'redcarpet'
 require 'pygments'
 
-# A singleton markdown converter, with GH flavoured markdown and render html code block using pygments
+# Singleton markdown converter, configured with github favoured markdown
+# 
+# adapted from  (https://github.com/chitsaou/ruby-taiwan/blob/d342b58dcfff3089a9599714a6911ca9c1f1490f/config/initializers/markdown.rb)
 class MarkdownConverter
   include Singleton
 
@@ -21,6 +23,7 @@ class MarkdownConverter
   end
 
   def convert(text)
+    text = text.force_encoding('utf-8') if text.respond_to?(:force_encoding)
     @converter.render(text)
   end
 

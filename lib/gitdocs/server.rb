@@ -16,7 +16,11 @@ module Gitdocs
     def start(port = 8888)
       gds = @gitdocs
       manager = @manager
-      
+
+      Tilt.prefer ::MarkdownTemplate, 'md'
+      Tilt.prefer ::MarkdownTemplate, 'mkd'
+      Tilt.prefer ::MarkdownTemplate, 'markdown'
+
       Thin::Logging.debug = @manager.debug
       Thin::Server.start('127.0.0.1', port) do
         use Rack::Static, :urls => ['/css', '/js', '/img', '/doc'], :root => File.expand_path("../public", __FILE__)
