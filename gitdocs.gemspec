@@ -3,15 +3,13 @@ $:.push File.expand_path("../lib", __FILE__)
 require "gitdocs/version"
 
 Gem::Specification.new do |s|
-  s.name        = "gitdocs"
+  s.name        = "siuying-gitdocs"
   s.version     = Gitdocs::VERSION
   s.authors     = ["Josh Hull", "Nathan Esquenazi"]
   s.email       = ["joshbuddy@gmail.com", "nesquena@gmail.com"]
-  s.homepage    = "http://engineering.gomiso.com/2011/11/30/collaborate-and-track-tasks-with-ease-using-gitdocs/"
-  s.summary     = %q{Open-source Dropbox using Ruby and Git}
-  s.description = %q{Open-source Dropbox using Ruby and Git.}
-
-  s.rubyforge_project = "gitdocs"
+  s.homepage    = "https://github.com/siuying/gitdocs"
+  s.summary     = %q{Open-source Dropbox using Ruby and Git (my fork with github favoured markdown support)}
+  s.description = %q{Open-source Dropbox using Ruby and Git (my fork with github favoured markdown support).}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
