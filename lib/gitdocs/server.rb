@@ -4,6 +4,7 @@ require 'coderay'
 require 'uri'
 require 'haml'
 require 'mimetype_fu'
+require 'pygments'
 
 module Gitdocs
   class Server
@@ -15,6 +16,7 @@ module Gitdocs
     def start(port = 8888)
       gds = @gitdocs
       manager = @manager
+      
       Thin::Logging.debug = @manager.debug
       Thin::Server.start('127.0.0.1', port) do
         use Rack::Static, :urls => ['/css', '/js', '/img', '/doc'], :root => File.expand_path("../public", __FILE__)
@@ -132,7 +134,8 @@ module Gitdocs
                     %|<embed class="inline-file" src="/#{idx}#{request.path_info}?mode=raw"></embed>|
                   end
                 end
-                render! "file", :layout => 'app', :locals => locals.merge(:contents => contents)
+                render! "file", :layout => 'app', :locals => locals.merge(:contents => contents, 
+                  :pygments_css => Pygments.css('.highlight'))
               else # other file
                 run! Rack::File.new(gd.root)
               end

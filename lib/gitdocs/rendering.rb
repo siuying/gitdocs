@@ -7,17 +7,14 @@
 #   gems/tilt-1.3.3/lib/tilt/markdown.rb:38:in `evaluate'
 #   gems/tilt-1.3.3/lib/tilt/markdown.rb:61:in `evaluate'
 #   gems/tilt-1.3.3/lib/tilt/template.rb:76:in `render'
-
 require 'redcarpet'
 
 # Compatibility class;
-# Creates a instance of Redcarpet with the RedCloth
-# API. This instance has no extensions enabled whatsoever,
-# and no accessors to change this. 100% pure, standard
-# Markdown.
+# - use MarkdownConverter singleton render
+# - force utf-8
 class RedcarpetCompat
   def to_html(*_dummy)
     @text = @text.force_encoding('utf-8') if @text.respond_to?(:force_encoding)
-    @markdown.render(@text)
+    MarkdownConverter.convert(@text)
   end
 end

@@ -5,6 +5,7 @@ require 'socket'
 require 'shell_tools'
 require 'guard'
 
+require 'gitdocs/markdown_converter'
 require 'gitdocs/version'
 require 'gitdocs/configuration'
 require 'gitdocs/runner'
