@@ -5,6 +5,7 @@ require 'uri'
 require 'haml'
 require 'mimetype_fu'
 require 'pygments'
+require 'redcloth'
 
 module Gitdocs
   class Server
